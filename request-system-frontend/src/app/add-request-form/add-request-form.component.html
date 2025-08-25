@@ -1,0 +1,46 @@
+<div dir="rtl">
+    <h2>הוספת פנייה</h2>
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+        <!-- שם הפונה -->
+        <mat-form-field appearance="outline" style="width: 100%;" floatLabel="always">
+            <mat-label>שם הפונה</mat-label>
+            <input matInput formControlName="requesterName" required />
+            <mat-error *ngIf="form.get('requesterName')?.hasError('required')">
+                יש למלא את שם הפונה
+            </mat-error>
+        </mat-form-field>
+
+        <!-- נושא -->
+        <mat-form-field appearance="outline" style="width: 100%;" floatLabel="always">
+            <mat-label>נושא</mat-label>
+            <input matInput formControlName="subject" required />
+            <mat-error *ngIf="form.get('subject')?.hasError('required')">
+                יש למלא את הנושא
+            </mat-error>
+            <mat-error *ngIf="form.get('subject')?.hasError('minlength')">
+                הנושא חייב להכיל לפחות 5 תווים
+            </mat-error>
+        </mat-form-field>
+
+        <!-- תוכן -->
+        <mat-form-field appearance="outline" style="width: 100%;" floatLabel="always">
+            <mat-label>תוכן</mat-label>
+            <textarea matInput formControlName="content" rows="4" required></textarea>
+            <mat-error *ngIf="form.get('content')?.hasError('required')">
+                יש להזין תוכן
+            </mat-error>
+            <mat-error *ngIf="form.get('content')?.hasError('minlength')">
+                התוכן חייב להכיל לפחות 10 תווים
+            </mat-error>
+        </mat-form-field>
+
+        <!-- כפתורים -->
+        <div style="text-align: right; margin-top: 16px;">
+            <button mat-button type="button" (click)="cancel()">ביטול</button>
+            <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">שמור</button>
+        </div>
+
+    </form>
+</div>

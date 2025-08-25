@@ -1,0 +1,7 @@
+mat-error {
+  display: block;
+  font-size: 12px;
+  color: red;
+  margin-top: 4px;
+  text-align: right;
+}

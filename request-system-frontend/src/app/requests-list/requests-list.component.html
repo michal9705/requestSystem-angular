@@ -1,0 +1,25 @@
+<div dir="rtl" class="container mt-4">
+  <h2>רשימת פניות</h2>
+  <table class="table table-striped table-bordered">
+    <thead class="table-dark">
+      <tr>
+        <th>שם הפונה</th>
+        <th>נושא</th>
+        <th>תאריך שליחה</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let request of requests">
+        <td>{{ request.requesterName }}</td>
+        <td>{{ request.subject }}</td>
+        <td>{{ request.submissionDate | date:'dd/MM/yyyy HH:mm' }}</td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="add-request-button-container">
+    <button mat-raised-button color="primary" class="custom-button" (click)="openAddRequestDialog()">
+      ✉️ הוסף פנייה חדשה
+    </button>
+  </div>
+
+</div>
